@@ -1,4 +1,5 @@
-﻿using YungChingInterviewQuiz.DataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using YungChingInterviewQuiz.DataAccess;
 using YungChingInterviewQuiz.Models;
 
 namespace YungChingInterviewQuiz.Repositories
@@ -23,6 +24,12 @@ namespace YungChingInterviewQuiz.Repositories
         public void Add(CustomersModel model)
         {
             _dbContext.CustomersModel.Add(model);
+            _dbContext.SaveChanges();
+        }
+
+        public void Update(CustomersModel model)
+        {
+            _dbContext.Entry(model).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
     }

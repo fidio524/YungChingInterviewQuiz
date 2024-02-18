@@ -24,5 +24,10 @@ namespace YungChingInterviewQuiz.Services
         {
             _repository.Add(model);
         }
+
+        public void UpdateModel(CustomersModel model)
+        {
+            _repository.Update(model);
+        }
     }
 }

@@ -39,5 +39,15 @@ namespace YungChingInterviewQuiz.Controllers
             _service.AddModel(model);
             return CreatedAtAction(nameof(GetById), new { id = model.CustomerID }, model);
         }
+
+        [HttpPut("Update")]
+        public IActionResult Update(string id, [FromBody] CustomersModel model)
+        {
+            if (id != model.CustomerID)
+                return BadRequest();
+
+            _service.UpdateModel(model);
+            return NoContent();
+        }
     }
 }
