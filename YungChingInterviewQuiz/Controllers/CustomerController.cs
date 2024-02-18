@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using YungChingInterviewQuiz.Models;
 using YungChingInterviewQuiz.Services;
 
 namespace YungChingInterviewQuiz.Controllers
@@ -14,14 +15,14 @@ namespace YungChingInterviewQuiz.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             var models = _service.GetAllModels();
             return Ok(models);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public IActionResult GetById(string id)
         {
             var model = _service.GetModelById(id);
@@ -30,6 +31,13 @@ namespace YungChingInterviewQuiz.Controllers
                 return NotFound();
 
             return Ok(model);
+        }
+
+        [HttpPost("Create")]
+        public IActionResult Create([FromBody] CustomersModel model)
+        {
+            _service.AddModel(model);
+            return CreatedAtAction(nameof(GetById), new { id = model.CustomerID }, model);
         }
     }
 }

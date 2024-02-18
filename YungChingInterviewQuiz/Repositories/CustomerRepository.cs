@@ -20,5 +20,10 @@ namespace YungChingInterviewQuiz.Repositories
         {
             return _dbContext.CustomersModel.Find(id);
         }
+        public void Add(CustomersModel model)
+        {
+            _dbContext.CustomersModel.Add(model);
+            _dbContext.SaveChanges();
+        }
     }
 }
