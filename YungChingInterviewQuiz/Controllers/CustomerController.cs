@@ -49,5 +49,12 @@ namespace YungChingInterviewQuiz.Controllers
             _service.UpdateModel(model);
             return NoContent();
         }
+
+        [HttpDelete("Delete")]
+        public IActionResult Delete(string id)
+        {
+            _service.DeleteModel(id);
+            return NoContent();
+        }
     }
 }

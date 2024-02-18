@@ -29,5 +29,10 @@ namespace YungChingInterviewQuiz.Services
         {
             _repository.Update(model);
         }
+
+        public void DeleteModel(string id)
+        {
+            _repository.Delete(id);
+        }
     }
 }

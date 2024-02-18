@@ -32,5 +32,12 @@ namespace YungChingInterviewQuiz.Repositories
             _dbContext.Entry(model).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
+
+        public void Delete(string id)
+        {
+            var model = _dbContext.CustomersModel.Find(id);
+            _dbContext.CustomersModel.Remove(model);
+            _dbContext.SaveChanges();
+        }
     }
 }
