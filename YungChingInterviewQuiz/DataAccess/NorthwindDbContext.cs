@@ -10,5 +10,12 @@ namespace YungChingInterviewQuiz.DataAccess
         }
 
         public DbSet<CustomersModel> CustomersModel { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // 在這裡定義主鍵
+            modelBuilder.Entity<CustomersModel>().HasKey(c => c.CustomerID);
+
+            // 其他配置...
+        }
     }
 }
