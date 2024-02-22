@@ -4,7 +4,15 @@ using YungChingInterviewQuiz.Models;
 
 namespace YungChingInterviewQuiz.Repositories
 {
-    public class CustomerRepository
+    public interface ICustomerRepository
+    {
+        public IEnumerable<CustomersModel> GetAll();
+        public CustomersModel GetById(string id);
+        public void Add(CustomersModel model);
+        public void Update(CustomersModel model);
+        public void Delete(string id);
+    }
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly NorthwindDbContext _dbContext;
         public CustomerRepository(NorthwindDbContext dbContext)

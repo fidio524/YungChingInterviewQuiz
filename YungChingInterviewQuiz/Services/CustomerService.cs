@@ -5,8 +5,8 @@ namespace YungChingInterviewQuiz.Services
 {
     public class CustomerService
     {
-        private readonly CustomerRepository _repository;
-        public CustomerService(CustomerRepository repository)
+        private readonly ICustomerRepository _repository;
+        public CustomerService(ICustomerRepository repository)
         {
             _repository = repository;
         }
